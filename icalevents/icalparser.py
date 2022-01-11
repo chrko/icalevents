@@ -277,11 +277,11 @@ def parse_events(content, start=None, end=None, default_span=timedelta(days=7)):
     found = []
 
     # Skip dates that are stored as exceptions.
-    exceptions = {}
     for component in calendar.walk():
         if component.name == "VEVENT":
             e = create_event(component, cal_tz)
 
+            exceptions = {}
             if ('EXDATE' in component):
                 # Deal with the fact that sometimes it's a list and
                 # sometimes it's a singleton
